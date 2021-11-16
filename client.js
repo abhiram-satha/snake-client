@@ -24,7 +24,30 @@ const connect = function() {
   conn.on('connect', () => {
     conn.write('Name: ABI')
   });
+
+  conn.on('connect', () => {
+      conn.write('Move: up')
+      //conn.end();
+    });
+
+  conn.on('connect', () => {
+    setInterval(movement, 500);
+  });
+
+  function movement () {
+    conn.write('Move: left')
+  }
   
+  conn.on('connect', () => {
+    setTimeout(() => {
+      conn.write('Move: up')
+    }, 1000);
+  });
+
+ 
+
+
+
    conn.on('data', (event) => {
      console.log(event)
      conn.end();
