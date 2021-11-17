@@ -1,9 +1,10 @@
 const net = require('net');
+const {IP, PORT } = require('./constants');
 
 const connect = function() {
   const conn = net.createConnection({
-    host: 'localhost',
-    port: 50541
+    host: IP,
+    port: PORT,
     
   });
 
@@ -16,13 +17,13 @@ const connect = function() {
   });
 
   conn.on('connect', () => {
-    console.log('Sucessfully connected to game server')
-  })
+    console.log('Sucessfully connected to game server');
+  });
 
   conn.setEncoding('utf8');
 
   conn.on('connect', () => {
-    conn.write('Name: ABI')
+    conn.write('Name: ABI');
   });
 
   // conn.on('connect', () => {
@@ -44,14 +45,13 @@ const connect = function() {
   //   }, 1000);
   // });
 
-  
 
 
 
-   conn.on('data', (event) => {
-     console.log(event)
-     conn.end();
-   } )
+  conn.on('data', (event) => {
+    console.log(event);
+    conn.end();
+  });
 
   return conn;
 };
