@@ -2,7 +2,6 @@ let connection;
 
 const handleUserInput = function(data) {
   
-  
   switch (data) {
     case 'w': 
       connection.write('Move: up');
@@ -17,6 +16,7 @@ const handleUserInput = function(data) {
       connection.write('Move: right');
       break;
     case '\u0003':
+      console.log('Quitter')
       process.exit();
     break;
   } 
@@ -33,4 +33,8 @@ const setupInput = function(conn) {
   return stdin;
 }
 
-module.exports = setupInput;
+
+
+module.exports = {
+  setupInput
+};
