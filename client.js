@@ -2,7 +2,7 @@ const net = require('net');
 
 const connect = function() {
   const conn = net.createConnection({
-    host: '10.0.2.15',
+    host: 'localhost',
     port: 50541
     
   });
@@ -25,26 +25,26 @@ const connect = function() {
     conn.write('Name: ABI')
   });
 
-  conn.on('connect', () => {
-      conn.write('Move: up')
-      //conn.end();
-    });
+  // conn.on('connect', () => {
+  //     conn.write('Move: up')
+  //     //conn.end();
+  //   });
 
-  conn.on('connect', () => {
-    setInterval(movement, 500);
-  });
+  // conn.on('connect', () => {
+  //   setInterval(movement, 500);
+  // });
 
-  function movement () {
-    conn.write('Move: left')
-  }
+  // function movement () {
+  //   conn.write('Move: left')
+  // }
   
-  conn.on('connect', () => {
-    setTimeout(() => {
-      conn.write('Move: up')
-    }, 1000);
-  });
+  // conn.on('connect', () => {
+  //   setTimeout(() => {
+  //     conn.write('Move: up')
+  //   }, 1000);
+  // });
 
- 
+  
 
 
 
@@ -55,7 +55,6 @@ const connect = function() {
 
   return conn;
 };
-
 
 module.exports = {
   connect,
